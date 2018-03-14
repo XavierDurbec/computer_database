@@ -34,10 +34,13 @@ public class ComputerDAO {
 		
 	private void doTest() throws SQLException {
 		
+		
 		selectListComputer();
-		deleteComputer(1);
+		
 		//createComputer(64,"MonOrdiKiTU",null,null,5);
-		selectComputer(1);
+		selectComputer(64);
+		UpdateComputer(64,"NouvoOrdiKItu2",null,null,6);
+		selectComputer(64);
 
 		
 		
@@ -112,19 +115,19 @@ public class ComputerDAO {
          System.out.println(status);    
  	}
     
-    private void UpdateComputer(int id,String n,Date d1,Date d2,int c_id) throws SQLException {
+    private void UpdateComputer(int id,String newName,Date d1,Date d2,int c_id) throws SQLException {
     	
   		System.out.println("---------Update d'un computer------------");	    
-  	    String queryInsertComputer = "UPDATE computer SET ?= WHERE id=?";
+  	    String queryInsertComputer = "UPDATE computer SET name=?, introduced=?,discontinued=?, company_id=? WHERE id=?";
   	    
   	    st = conn.createStatement();	 	    
-          ps = conn.prepareStatement(queryInsertComputer);
-  	    
-  	    ps.setInt(1,id);
-  	    ps.setString(2,n);
-  	    ps.setDate(3,d1);
-  	    ps.setDate(4,d2);
-  	    ps.setInt(5, c_id);
+        ps = conn.prepareStatement(queryInsertComputer);
+        
+        ps.setString(1,newName);
+  	    ps.setDate(2,d1);
+  	    ps.setDate(3,d2);
+  	    ps.setInt(4,c_id);
+  	    ps.setInt(5, id);
   	    
   	    int status = ps.executeUpdate();
   	    
