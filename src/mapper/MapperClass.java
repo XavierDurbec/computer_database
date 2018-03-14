@@ -15,15 +15,16 @@ public class MapperClass {
 		super();
 		this.rs = rs;
 	}
-
+	
 	public ResultSet getRs() {
 		return rs;
 	}
-
 	public void setRs(ResultSet rs) {
 		this.rs = rs;
 	}
 
+	
+	
 	public Computer createObjectComputer() throws SQLException {
 		
 		int id = rs.getInt("id");
@@ -53,8 +54,7 @@ public class MapperClass {
 		  while (rs.next()) {
 			  
 			 Computer c = createObjectComputer();
-			 lc.add(c);
-			  
+			 lc.add(c);			  
 			  
 		  }
 		

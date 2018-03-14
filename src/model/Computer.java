@@ -18,56 +18,45 @@ public class Computer {
 		this.dateDiscontinued = dateDiscontinued;
 		this.manufacturer = manufacturer;
 	}
-
 	public Computer() {
 		name = null;
 		manufacturer = 0;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String n) {
+		this.name = n;
+	}	
+	public Date getDateIntroduced() {
+		return this.dateIntroduced;
+	}
+	public void setDateIntroduced(Date d) {
+		 this.dateIntroduced = d;
+	}
+	public Date getDateDiscontinued() {
+		return this.dateDiscontinued;
+	}	
+	public void setDateDiscontinued(Date d) {
+		 this.dateDiscontinued = d;
+	}
+	public int getManufacturer() {
+		return this.manufacturer;
+	}	
+	public void setManufacturer(int n) {
+		this.manufacturer = n;
 	}
 	
 	@Override
 	public String toString() {
 		return  name;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	
-	public void setName(String n) {
-		this.name = n;
-	}
-	
-	public Date getDateIntroduced() {
-		return this.dateIntroduced;
-	}
-	
-	public void setDateIntroduced(Date d) {
-		 this.dateIntroduced = d;
-	}
-	
-	public Date getDateDiscontinued() {
-		return this.dateDiscontinued;
-	}
-	
-	public void setDateDiscontinued(Date d) {
-		 this.dateDiscontinued = d;
-	}
-	
-	public int getManufacturer() {
-		return this.manufacturer;
-	}
-	
-	public void setManufacturer(int n) {
-		this.manufacturer = n;
-	}
-	
 	
 }

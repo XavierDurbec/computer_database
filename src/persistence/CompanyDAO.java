@@ -31,9 +31,7 @@ public class CompanyDAO {
 	}
 		
 	private void doTest() throws SQLException {
-		
-		selectListCompany();
-		
+			
 		if (rs != null) {
 			rs.close();
 		}

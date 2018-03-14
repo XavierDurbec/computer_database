@@ -31,27 +31,19 @@ public class ComputerDAO {
 		String mdp = "qwerty1234";
 			
 	    conn = DriverManager.getConnection( url,utilisateur,mdp); 
-	   doTest();
+	    doTest();
 	    conn.close();		
 	}
 		
 	public ListComputer getLc() {
 		return lc;
 	}
-
 	public void setLc(ListComputer lc) {
 		this.lc = lc;
 	}
 
+	
 	private void doTest() throws SQLException {
-		
-		
-	//	selectListComputer();
-		
-		//createComputer(64,"MonOrdiKiTU",null,null,5);
-	//	selectComputer(64);
-	//	UpdateComputer(64,"NouvoOrdiKItu2",null,null,6);
-	//	selectComputer(64);
 		
 		lc = selectListComputer();
 		
@@ -67,14 +59,14 @@ public class ComputerDAO {
 	
 	public ListComputer selectListComputer() throws SQLException {
 		
-	//	System.out.println("-----------Selection de la liste des computers-------");
+		System.out.println("-----------Selection de la liste des computers-------");
 	    String queryListComputer = "SELECT * FROM computer";	    
 	    
 	    st = conn.createStatement();	 
 	    rs = st.executeQuery(queryListComputer);	   
 	   	     		    	   	
         MapperClass m = new MapperClass(rs); 	    	
-	  //  System.out.println(m.createObjectListComputer());   
+	    System.out.println(m.createObjectListComputer());   
 	    return m.createObjectListComputer();
 	}
 	
@@ -146,8 +138,7 @@ public class ComputerDAO {
   	    System.out.println(status); 
       	
       }
-    
-    
+        
 	public static void main(String args[]) throws SQLException {
 		
 		new ComputerDAO();
