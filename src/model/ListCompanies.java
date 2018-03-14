@@ -43,12 +43,5 @@ public class ListCompanies {
 	public void setLisCompanies(ArrayList<Company> listCompanies) {
 		this.listCompanies = listCompanies;
 	}
-
-
-
-
-
 	
-	
-
 }

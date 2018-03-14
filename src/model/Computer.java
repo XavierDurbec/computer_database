@@ -24,12 +24,9 @@ public class Computer {
 		manufacturer = 0;
 	}
 	
-	
-	
 	@Override
 	public String toString() {
-		return "Computer [id=" + id + ", name=" + name + ", dateIntroduced=" + dateIntroduced + ", dateDiscontinued="
-				+ dateDiscontinued + ", manufacturer=" + manufacturer + "]";
+		return  name;
 	}
 
 	public int getId() {

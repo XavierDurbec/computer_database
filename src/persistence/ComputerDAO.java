@@ -3,6 +3,8 @@ package persistence;
 import java.sql.*;
 
 import mapper.MapperClass;
+import model.ListComputer;
+import service.Service;
 
 
 public class ComputerDAO {
@@ -11,6 +13,7 @@ public class ComputerDAO {
 	private Statement st = null;
 	private ResultSet rs = null;
 	private PreparedStatement ps = null;
+	private ListComputer lc;
 
 
 	public ComputerDAO() throws SQLException {
@@ -28,21 +31,29 @@ public class ComputerDAO {
 		String mdp = "qwerty1234";
 			
 	    conn = DriverManager.getConnection( url,utilisateur,mdp); 
-	    doTest();
+	   doTest();
 	    conn.close();		
 	}
 		
+	public ListComputer getLc() {
+		return lc;
+	}
+
+	public void setLc(ListComputer lc) {
+		this.lc = lc;
+	}
+
 	private void doTest() throws SQLException {
 		
 		
-		selectListComputer();
+	//	selectListComputer();
 		
 		//createComputer(64,"MonOrdiKiTU",null,null,5);
-		selectComputer(64);
-		UpdateComputer(64,"NouvoOrdiKItu2",null,null,6);
-		selectComputer(64);
-
+	//	selectComputer(64);
+	//	UpdateComputer(64,"NouvoOrdiKItu2",null,null,6);
+	//	selectComputer(64);
 		
+		lc = selectListComputer();
 		
 		if (rs != null) {
 			rs.close();
@@ -54,16 +65,17 @@ public class ComputerDAO {
 					
 	}
 	
-	private void selectListComputer() throws SQLException {
+	public ListComputer selectListComputer() throws SQLException {
 		
-		System.out.println("-----------Selection de la liste des computers-------");
+	//	System.out.println("-----------Selection de la liste des computers-------");
 	    String queryListComputer = "SELECT * FROM computer";	    
 	    
 	    st = conn.createStatement();	 
 	    rs = st.executeQuery(queryListComputer);	   
 	   	     		    	   	
         MapperClass m = new MapperClass(rs); 	    	
-	    System.out.println(m.createObjectListComputer());    
+	  //  System.out.println(m.createObjectListComputer());   
+	    return m.createObjectListComputer();
 	}
 	
     private void selectComputer(int id) throws SQLException {

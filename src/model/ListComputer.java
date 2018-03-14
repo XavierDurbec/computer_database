@@ -11,15 +11,11 @@ public class ListComputer {
 		computerNumber = 0;
 		listComputer = new ArrayList<Computer>();
 	}
-
-	
 	
 	@Override
 	public String toString() {
 		return "ListComputer [computerNumber=" + computerNumber + ", listComputer=" + listComputer + "]";
 	}
-
-
 
 	public ListComputer(ArrayList<Computer> listComputer) {
 		super();
@@ -44,11 +40,16 @@ public class ListComputer {
 	public ArrayList<Computer> getListComputer() {
 		return listComputer;
 	}
+	
+	
+	
+
+	
+	
 
 	public void setListComputer(ArrayList<Computer> listComputer) {
 		this.listComputer = listComputer;
 	}
-	
 	
 	
 

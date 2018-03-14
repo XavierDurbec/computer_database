@@ -58,9 +58,7 @@ public class CompanyDAO {
 	    
 	        
 	}
-	
-	
-	
+		
 	public static void main(String args[]) throws SQLException {
 		
 		new CompanyDAO();
