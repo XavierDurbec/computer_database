@@ -3,9 +3,13 @@ package ui;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import model.Computer;
+import service.Service;
+
 public class CLI_UI {
 	
 	Scanner sc = new Scanner(System.in);
+	Scanner sc2 = new Scanner(System.in);
 	
 	public CLI_UI() throws SQLException  {
 		
@@ -45,8 +49,21 @@ public class CLI_UI {
 		}
 	
     public void showComputer() throws SQLException {
+    	int id;
+    	Computer c;
     	System.out.println("Selectionner l'id de l'ordinateur à afficher : ");
-    	sc.nextLine();
+
+    	id = sc2.nextInt();
+    	System.out.println("Recherche dans la base de donnée : ");
+    	Service s = new Service(id);
+    	c = s.getCurrentComputer();
+    	System.out.println(c);
+    	
+    	
+    	System.out.println("affichage du computer : ");
+    	
+    	
+    	
     	
 	}
 	

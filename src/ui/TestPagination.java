@@ -94,7 +94,7 @@ public class TestPagination extends JFrame{
 
 		//  System.out.println(s.getLc().getListComputer());
 	   
-          return   s.getLc().getListComputer();
+          return   s.getCurrentListComputer().getListComputer();
     }
     
     public static void main(String[] args) throws SQLException{

@@ -3,7 +3,7 @@ package persistence;
 import java.sql.*;
 
 import mapper.MapperClass;
-import model.ListComputer;
+import model.*;
 import service.Service;
 
 
@@ -14,7 +14,33 @@ public class ComputerDAO {
 	private ResultSet rs = null;
 	private PreparedStatement ps = null;
 	private ListComputer lc;
+	private Computer c;
+	
+	private String queryListComputer = "SELECT * FROM computer";	    
+    private String queryInsertComputer = "INSERT INTO computer (id,name,introduced,discontinued,company_id) VALUES (?,?,?,?,?)";
+    private String queryDeleteComputer = "DELETE FROM computer WHERE id=?";	    
+    private String queryUpdateComputer = "UPDATE computer SET name=?, introduced=?,discontinued=?, company_id=? WHERE id=?";
+	private	String queryComputerInfo = "SELECT * FROM computer WHERE id=?";	    
 
+	public ComputerDAO(int id) throws SQLException {
+	
+		try {
+		    Class.forName( "com.mysql.jdbc.Driver" );
+		} 
+		catch ( ClassNotFoundException e ) 
+		{
+
+		}
+		
+		String url = "jdbc:mysql://localhost:3306/computer-database-db";
+		String utilisateur = "admincdb";
+		String mdp = "qwerty1234";
+			
+	    conn = DriverManager.getConnection( url,utilisateur,mdp); 
+	    doInit(id);
+	    conn.close();		
+	}
+	
 	public ComputerDAO() throws SQLException {
 		
 		try {
@@ -41,6 +67,21 @@ public class ComputerDAO {
 		this.lc = lc;
 	}
 
+	private void doInit(int id) throws SQLException {
+		
+		lc = selectListComputer();
+		c  = selectComputer(id);
+		
+		if (rs != null) {
+			rs.close();
+		}
+		
+		if (st != null) {
+			st.close();
+		}
+					
+	}
+	
 	private void doInit() throws SQLException {
 		
 		lc = selectListComputer();
@@ -55,11 +96,18 @@ public class ComputerDAO {
 					
 	}
 	
+	public Computer getC() {
+		return c;
+	}
+
+	public void setC(Computer c) {
+		this.c = c;
+	}
+
 	public ListComputer selectListComputer() throws SQLException {
 		
 		ListComputer a;
 		System.out.println("-----------Selection de la liste des computers-------");
-	    String queryListComputer = "SELECT * FROM computer";	    
 	    
 	    st = conn.createStatement();	 
 	    rs = st.executeQuery(queryListComputer);	   
@@ -70,25 +118,24 @@ public class ComputerDAO {
 	    return a;
 	}
 	
-    private void selectComputer(int id) throws SQLException {
+    public Computer selectComputer(int id) throws SQLException {
 		
-		System.out.println("----------Info sur un computer-----------");
-		String queryComputerInfo = "SELECT * FROM computer WHERE id=?";	    
-	    
+    	MapperClass m = new MapperClass(rs); 
+    	
+		System.out.println("----------Info sur un computer-----------");	    
 	    st = conn.createStatement();	 	    
         ps = conn.prepareStatement(queryComputerInfo);
 	    
 	    ps.setInt(1,id);
 	    rs = ps.executeQuery();
     	     		    	   	
-        MapperClass m = new MapperClass(rs); 	    	
-	    System.out.println(m.createObjectListComputer());    
+        	    	
+	    return m.createObjectComputer();   
 	}
 
     private void createComputer(int id,String n,Date d1,Date d2,int c_id) throws SQLException {
     	
 		System.out.println("---------Creation d'un computer------------");	    
-	    String queryInsertComputer = "INSERT INTO computer (id,name,introduced,discontinued,company_id) VALUES (?,?,?,?,?)";
 	    
 	    st = conn.createStatement();	 	    
         ps = conn.prepareStatement(queryInsertComputer);
@@ -108,7 +155,6 @@ public class ComputerDAO {
     private void deleteComputer(int id) throws SQLException {
 		
  		System.out.println("----------Suppression d'un computer-----------");
- 		String queryDeleteComputer = "DELETE FROM computer WHERE id=?";	    
  	    
  	     st = conn.createStatement();	 	    
          ps = conn.prepareStatement(queryDeleteComputer);
@@ -122,10 +168,9 @@ public class ComputerDAO {
     private void UpdateComputer(int id,String newName,Date d1,Date d2,int c_id) throws SQLException {
     	
   		System.out.println("---------Update d'un computer------------");	    
-  	    String queryInsertComputer = "UPDATE computer SET name=?, introduced=?,discontinued=?, company_id=? WHERE id=?";
   	    
   	    st = conn.createStatement();	 	    
-        ps = conn.prepareStatement(queryInsertComputer);
+        ps = conn.prepareStatement(queryUpdateComputer);
         
         ps.setString(1,newName);
   	    ps.setDate(2,d1);
