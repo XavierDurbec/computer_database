@@ -9,8 +9,7 @@ public class CLI_UI {
 	
 	public CLI_UI() throws SQLException  {
 		
-		  System.out.println("saisir commande : ");
-		  Scanner sc = new Scanner(System.in);
+		  System.out.println("Saisir commande : ");
 		  String str = sc.nextLine();
 		  
 		  switch (str) {
@@ -20,6 +19,9 @@ public class CLI_UI {
 		  			             	
 		  case "List companies":    afficherListCompanies();
 		  			             	break;
+		  			             
+		  case "Show computer":     showComputer();
+			                        break;			             	
 		  			             	
 		  case "Create computer":   createComputer();
 		  							break;
@@ -31,7 +33,6 @@ public class CLI_UI {
 		                        	break;
 		  }
 		
-		
 	}
 	
 	public void afficherListComputer() throws SQLException {
@@ -42,6 +43,12 @@ public class CLI_UI {
 	public void afficherListCompanies() throws SQLException {
 	   	
 		}
+	
+    public void showComputer() throws SQLException {
+    	System.out.println("Selectionner l'id de l'ordinateur à afficher : ");
+    	sc.nextLine();
+    	
+	}
 	
 	public void createComputer() throws SQLException {
 	   	
