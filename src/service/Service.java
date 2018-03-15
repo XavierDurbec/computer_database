@@ -2,6 +2,7 @@ package service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import model.Computer;
 import model.ListComputer;
@@ -10,6 +11,8 @@ import persistence.ComputerDAO;
 public class Service {
 	
 	private ListComputer lc;
+	
+	
 	
 	public Service() throws SQLException {
 		super();
@@ -33,13 +36,7 @@ public class Service {
 		return lc.getListComputer();
 	}
 	
-	  public static void main(String[] args) throws SQLException{
 	
-		  Service s = new Service();		  
-		  System.out.println("test");
-		  System.out.println(s.recupListComputer());
-	  
-	  }
 	
 	
 }

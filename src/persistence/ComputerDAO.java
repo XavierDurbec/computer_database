@@ -15,7 +15,6 @@ public class ComputerDAO {
 	private PreparedStatement ps = null;
 	private ListComputer lc;
 
-
 	public ComputerDAO() throws SQLException {
 		
 		try {
@@ -31,7 +30,7 @@ public class ComputerDAO {
 		String mdp = "qwerty1234";
 			
 	    conn = DriverManager.getConnection( url,utilisateur,mdp); 
-	    doTest();
+	    doInit();
 	    conn.close();		
 	}
 		
@@ -42,8 +41,7 @@ public class ComputerDAO {
 		this.lc = lc;
 	}
 
-	
-	private void doTest() throws SQLException {
+	private void doInit() throws SQLException {
 		
 		lc = selectListComputer();
 		
@@ -59,15 +57,17 @@ public class ComputerDAO {
 	
 	public ListComputer selectListComputer() throws SQLException {
 		
+		ListComputer a;
 		System.out.println("-----------Selection de la liste des computers-------");
 	    String queryListComputer = "SELECT * FROM computer";	    
 	    
 	    st = conn.createStatement();	 
 	    rs = st.executeQuery(queryListComputer);	   
 	   	     		    	   	
-        MapperClass m = new MapperClass(rs); 	    	
-	    System.out.println(m.createObjectListComputer());   
-	    return m.createObjectListComputer();
+        MapperClass m = new MapperClass(rs); 	
+        a = m.createObjectListComputer();
+	    	 
+	    return a;
 	}
 	
     private void selectComputer(int id) throws SQLException {
@@ -141,7 +141,8 @@ public class ComputerDAO {
         
 	public static void main(String args[]) throws SQLException {
 		
-		new ComputerDAO();
+		ComputerDAO c = new ComputerDAO();
+		System.out.println(c.getLc());
 	
 }
 	
