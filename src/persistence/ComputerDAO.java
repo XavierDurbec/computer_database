@@ -13,6 +13,8 @@ public class ComputerDAO {
 	private Statement st = null;
 	private ResultSet rs = null;
 	private PreparedStatement ps = null;
+	
+	private static ComputerDAO INSTANCE = null;
 
 	
 	private String queryListComputer = "SELECT * FROM computer";	    
@@ -23,9 +25,17 @@ public class ComputerDAO {
 
 
 	
-	public ComputerDAO() throws SQLException {
-		conn = new ConnexionManager();	
+	private ComputerDAO() throws SQLException {
+		conn = conn.getInstance();	
 	}
+	
+	public static ComputerDAO getInstance() throws SQLException {
+		if(INSTANCE == null) {
+			INSTANCE = new ComputerDAO();
+		}
+		return INSTANCE;
+	}
+
 
 	public ListComputer selectListComputer() throws SQLException {
 		

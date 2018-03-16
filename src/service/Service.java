@@ -17,7 +17,7 @@ public class Service {
 	
 	public Service() throws SQLException {
 		super();
-	    cdao = new ComputerDAO();
+	    cdao = cdao.getInstance();
 
 	}
 
@@ -44,15 +44,14 @@ public class Service {
 		cdao.UpdateComputer(id, n, d1, d2, c_id);	
 		
 	}
-
-
-	public ArrayList<Computer> recupListComputer() throws SQLException {
-    	ListComputer lc = new ListComputer();
-    	ComputerDAO cdao = new ComputerDAO();
-    	lc = cdao.selectListComputer();
-    	
-		return lc.getListComputer();
+	
+public void deleteComputer(int id) throws SQLException {
+		
+		cdao.deleteComputer(id);	
+		
 	}
+
+
 	
 	
 	

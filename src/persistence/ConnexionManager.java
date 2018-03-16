@@ -13,7 +13,9 @@ public class ConnexionManager {
 	private String utilisateur = "admincdb";
 	private String mdp = "qwerty1234";
 	
-	public ConnexionManager() throws SQLException {
+	private static ConnexionManager INSTANCE = null;
+	
+	private ConnexionManager() throws SQLException {
 		try {
 			Class.forName( "com.mysql.jdbc.Driver" );
 		} 
@@ -24,6 +26,13 @@ public class ConnexionManager {
 		
 		conn = DriverManager.getConnection( url,utilisateur,mdp); 
 	
+	}
+	
+	public static ConnexionManager getInstance() throws SQLException {
+		if(INSTANCE == null) {
+			INSTANCE = new ConnexionManager();
+		}
+		return INSTANCE;
 	}
 
 	public Connection getConn() {
