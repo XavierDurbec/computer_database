@@ -49,7 +49,7 @@ public class TestPagination extends JFrame{
          * Construction de notre système de pagination pour la liste
          * fournie par la méthode getList()
          */
-        paginationPanel = new PaginationPanel<Computer>(getList());
+     //   paginationPanel = new PaginationPanel<Computer>(getList());
         //Instanciation avec classe anonyme de notre observateur
         paginationObserver = new PaginationObserver<Computer>(){
 
@@ -85,17 +85,7 @@ public class TestPagination extends JFrame{
     /*
      * Création d'une liste de données à paginer
      */
-    private ArrayList<Computer> getList() throws SQLException{
-    	
-  	
-  Service s = new Service();
-		  
-		  System.out.println("test");
 
-		//  System.out.println(s.getLc().getListComputer());
-	   
-          return   s.getCurrentListComputer().getListComputer();
-    }
     
     public static void main(String[] args) throws SQLException{
         TestPagination testView = new TestPagination();

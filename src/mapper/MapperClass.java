@@ -33,7 +33,7 @@ public class MapperClass {
     	Date discontinued =  rs.getDate("discontinued");
     	int company_id = rs.getInt("company_id");
     	
-    	Computer c = new Computer(id,name,introduced,discontinued,company_id);	   
+    	Computer c = new Computer(5,name,introduced,discontinued,company_id);	   
     	
     	return c; 
 	}

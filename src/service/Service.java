@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,42 +11,33 @@ import persistence.ComputerDAO;
 
 public class Service {
 	
-	private ListComputer currentListComputer;
-	private Computer currentComputer;
+	private ComputerDAO cdao;
+
 	
 	public Service() throws SQLException {
 		super();
-		ComputerDAO cdao = new ComputerDAO();
-		currentListComputer = cdao.getLc();
-		cdao = null;
-	}
-	
-	public Service(int id) throws SQLException {
-		super();
-		ComputerDAO cdao = new ComputerDAO();
-		setCurrentComputer(id);
-		currentListComputer = cdao.getLc();
-		cdao = null;
+	    cdao = new ComputerDAO();
+
 	}
 
-	public ListComputer getCurrentListComputer() {
-		return currentListComputer;
-	}
-	public void setCurrentListComputer(ListComputer lc) {
-		this.currentListComputer = lc;
+	public ListComputer getListComputer() throws SQLException {
+		ListComputer lc;		
+		lc = cdao.selectListComputer();		
+		return lc;
 	}
 	
-	public Computer getCurrentComputer() {
-		return currentComputer;
+	public ListComputer getComputer(int id) throws SQLException {
+		ListComputer lc;		
+		lc = cdao.selectComputer(id);		
+		return lc;
+	}
+	
+	public void createComputer(int id,String n,Date d1,Date d2,int c_id) throws SQLException {
+		
+		cdao.createComputer(id, n, d1, d2, c_id);	
+		
 	}
 
-	public void setCurrentComputer(int id) throws SQLException {
-		Computer c;
-		ComputerDAO cdao = new ComputerDAO(id);
-		c = cdao.getC();
-		cdao = null;
-		this.currentComputer = c;
-	}
 
 	public ArrayList<Computer> recupListComputer() throws SQLException {
     	ListComputer lc = new ListComputer();

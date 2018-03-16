@@ -9,12 +9,11 @@ import service.Service;
 
 public class ComputerDAO {
 	
-	private Connection conn;
+	private ConnexionManager conn;
 	private Statement st = null;
 	private ResultSet rs = null;
 	private PreparedStatement ps = null;
-	private ListComputer lc;
-	private Computer c;
+
 	
 	private String queryListComputer = "SELECT * FROM computer";	    
     private String queryInsertComputer = "INSERT INTO computer (id,name,introduced,discontinued,company_id) VALUES (?,?,?,?,?)";
@@ -22,86 +21,10 @@ public class ComputerDAO {
     private String queryUpdateComputer = "UPDATE computer SET name=?, introduced=?,discontinued=?, company_id=? WHERE id=?";
 	private	String queryComputerInfo = "SELECT * FROM computer WHERE id=?";	    
 
-	public ComputerDAO(int id) throws SQLException {
-	
-		try {
-		    Class.forName( "com.mysql.jdbc.Driver" );
-		} 
-		catch ( ClassNotFoundException e ) 
-		{
 
-		}
-		
-		String url = "jdbc:mysql://localhost:3306/computer-database-db";
-		String utilisateur = "admincdb";
-		String mdp = "qwerty1234";
-			
-	    conn = DriverManager.getConnection( url,utilisateur,mdp); 
-	    doInit(id);
-	    conn.close();		
-	}
 	
 	public ComputerDAO() throws SQLException {
-		
-		try {
-		    Class.forName( "com.mysql.jdbc.Driver" );
-		} 
-		catch ( ClassNotFoundException e ) 
-		{
-
-		}
-		
-		String url = "jdbc:mysql://localhost:3306/computer-database-db";
-		String utilisateur = "admincdb";
-		String mdp = "qwerty1234";
-			
-	    conn = DriverManager.getConnection( url,utilisateur,mdp); 
-	    doInit();
-	    conn.close();		
-	}
-		
-	public ListComputer getLc() {
-		return lc;
-	}
-	public void setLc(ListComputer lc) {
-		this.lc = lc;
-	}
-
-	private void doInit(int id) throws SQLException {
-		
-		lc = selectListComputer();
-		c  = selectComputer(id);
-		
-		if (rs != null) {
-			rs.close();
-		}
-		
-		if (st != null) {
-			st.close();
-		}
-					
-	}
-	
-	private void doInit() throws SQLException {
-		
-		lc = selectListComputer();
-		
-		if (rs != null) {
-			rs.close();
-		}
-		
-		if (st != null) {
-			st.close();
-		}
-					
-	}
-	
-	public Computer getC() {
-		return c;
-	}
-
-	public void setC(Computer c) {
-		this.c = c;
+		conn = new ConnexionManager();	
 	}
 
 	public ListComputer selectListComputer() throws SQLException {
@@ -109,36 +32,37 @@ public class ComputerDAO {
 		ListComputer a;
 		System.out.println("-----------Selection de la liste des computers-------");
 	    
-	    st = conn.createStatement();	 
+	    st = conn.getConn().createStatement();	 
 	    rs = st.executeQuery(queryListComputer);	   
 	   	     		    	   	
         MapperClass m = new MapperClass(rs); 	
         a = m.createObjectListComputer();
+    	System.out.println(a);	
 	    	 
 	    return a;
 	}
 	
-    public Computer selectComputer(int id) throws SQLException {
+    public ListComputer selectComputer(int id) throws SQLException {
 		
-    	MapperClass m = new MapperClass(rs); 
-    	
-		System.out.println("----------Info sur un computer-----------");	    
-	    st = conn.createStatement();	 	    
-        ps = conn.prepareStatement(queryComputerInfo);
-	    
-	    ps.setInt(1,id);
+    	ListComputer c ;
+    	System.out.println("----------Info sur un computer-----------");	
+     
+	    st = conn.getConn().createStatement();	 	    
+        ps = conn.getConn().prepareStatement(queryComputerInfo);
+        ps.setInt(1,id);
 	    rs = ps.executeQuery();
-    	     		    	   	
-        	    	
-	    return m.createObjectComputer();   
+        
+        MapperClass m = new MapperClass(rs);        
+    	c =  m.createObjectListComputer();         	    	
+	    return c; 
 	}
 
-    private void createComputer(int id,String n,Date d1,Date d2,int c_id) throws SQLException {
+    public void createComputer(int id,String n,Date d1,Date d2,int c_id) throws SQLException {
     	
 		System.out.println("---------Creation d'un computer------------");	    
 	    
-	    st = conn.createStatement();	 	    
-        ps = conn.prepareStatement(queryInsertComputer);
+	    st = conn.getConn().createStatement();	 	    
+        ps = conn.getConn().prepareStatement(queryInsertComputer);
 	    
 	    ps.setInt(1,id);
 	    ps.setString(2,n);
@@ -152,12 +76,12 @@ public class ComputerDAO {
     	
     }
     
-    private void deleteComputer(int id) throws SQLException {
+    public void deleteComputer(int id) throws SQLException {
 		
  		System.out.println("----------Suppression d'un computer-----------");
  	    
- 	     st = conn.createStatement();	 	    
-         ps = conn.prepareStatement(queryDeleteComputer);
+ 	     st = conn.getConn().createStatement();	 	    
+         ps = conn.getConn().prepareStatement(queryDeleteComputer);
  	    
          ps.setInt(1,id);
          int status = ps.executeUpdate();
@@ -165,12 +89,12 @@ public class ComputerDAO {
          System.out.println(status);    
  	}
     
-    private void UpdateComputer(int id,String newName,Date d1,Date d2,int c_id) throws SQLException {
-    	
+    public void UpdateComputer(int id,String newName,Date d1,Date d2,int c_id) throws SQLException {
+
   		System.out.println("---------Update d'un computer------------");	    
   	    
-  	    st = conn.createStatement();	 	    
-        ps = conn.prepareStatement(queryUpdateComputer);
+  	    st = conn.getConn().createStatement();	 	    
+        ps = conn.getConn().prepareStatement(queryUpdateComputer);
         
         ps.setString(1,newName);
   	    ps.setDate(2,d1);
@@ -183,11 +107,19 @@ public class ComputerDAO {
   	    System.out.println(status); 
       	
       }
-        
+       
+    
+    public void closeConnection() throws SQLException {
+    	
+    	conn.closeConnection();
+    }
+    
+    
 	public static void main(String args[]) throws SQLException {
 		
 		ComputerDAO c = new ComputerDAO();
-		System.out.println(c.getLc());
+		c.selectListComputer();
+
 	
 }
 	
