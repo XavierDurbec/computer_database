@@ -2,6 +2,7 @@ package service;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,9 +33,15 @@ public class Service {
 		return lc;
 	}
 	
-	public void createComputer(int id,String n,Date d1,Date d2,int c_id) throws SQLException {
+	public void createComputer(int id,String n,Timestamp d1,Timestamp d2,int c_id) throws SQLException {
 		
 		cdao.createComputer(id, n, d1, d2, c_id);	
+		
+	}
+	
+	public void updateComputer(int id,String n,Timestamp d1,Timestamp d2,int c_id) throws SQLException {
+		
+		cdao.UpdateComputer(id, n, d1, d2, c_id);	
 		
 	}
 

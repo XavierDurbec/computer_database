@@ -3,6 +3,7 @@ package mapper;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import model.*;
@@ -29,8 +30,8 @@ public class MapperClass {
 		
 		int id = rs.getInt("id");
     	String name =  rs.getString("name");
-    	Date introduced =  rs.getDate("introduced");
-    	Date discontinued =  rs.getDate("discontinued");
+    	Timestamp introduced =  rs.getTimestamp("introduced");
+    	Timestamp discontinued =  rs.getTimestamp("discontinued");
     	int company_id = rs.getInt("company_id");
     	
     	Computer c = new Computer(5,name,introduced,discontinued,company_id);	   

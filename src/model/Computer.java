@@ -1,16 +1,17 @@
 package model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Computer {
 
 	private int id;
 	private String name;
-	private Date dateIntroduced;
-	private Date dateDiscontinued;
+	private Timestamp dateIntroduced;
+	private Timestamp dateDiscontinued;
 	private int manufacturer;
 	
-	public Computer(int id, String name, Date dateIntroduced, Date dateDiscontinued, int manufacturer) {
+	public Computer(int id, String name, Timestamp dateIntroduced, Timestamp dateDiscontinued, int manufacturer) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -35,16 +36,16 @@ public class Computer {
 	public void setName(String n) {
 		this.name = n;
 	}	
-	public Date getDateIntroduced() {
+	public Timestamp getDateIntroduced() {
 		return this.dateIntroduced;
 	}
-	public void setDateIntroduced(Date d) {
+	public void setDateIntroduced(Timestamp d) {
 		 this.dateIntroduced = d;
 	}
-	public Date getDateDiscontinued() {
+	public Timestamp getDateDiscontinued() {
 		return this.dateDiscontinued;
 	}	
-	public void setDateDiscontinued(Date d) {
+	public void setDateDiscontinued(Timestamp d) {
 		 this.dateDiscontinued = d;
 	}
 	public int getManufacturer() {

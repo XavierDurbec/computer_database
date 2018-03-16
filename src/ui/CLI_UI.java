@@ -16,7 +16,7 @@ public class CLI_UI {
 	public CLI_UI() throws SQLException  {
 		
 		  System.out.println("Saisir commande : ");
-		  createComputer();
+		  updateComputer();
 	// String str = sc.nextLine();
 		  String str = "";
 		  switch (str) {
@@ -83,7 +83,13 @@ public class CLI_UI {
 	}
     
     public void updateComputer() throws SQLException {
-	   	
+       	System.out.println("Selectionner l'id de l'ordinateur à changer : ");
+    	int id = sc2.nextInt();    
+    	System.out.println("update dans la base de donnée ... ");
+    	System.out.println(s.getComputer(id));
+        s.updateComputer(id, "nouvvo22", null, null, 5);
+    	System.out.println("affichage du computer : ");
+    	System.out.println(s.getComputer(id));
 	}
 
   public static void main(String[] args) throws SQLException{
