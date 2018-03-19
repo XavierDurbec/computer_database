@@ -22,9 +22,7 @@ public class ConnexionManager {
 		catch ( ClassNotFoundException e ) 
 		{
  
-		}
-		
-		conn = DriverManager.getConnection( url,utilisateur,mdp); 
+		}	
 	
 	}
 	
@@ -50,5 +48,9 @@ public class ConnexionManager {
 	
 	public void closeConnection() throws SQLException {
 		this.conn.close();
+	}
+	
+	public void openConnection() throws SQLException {
+		conn = DriverManager.getConnection( url,utilisateur,mdp); 
 	}
 }

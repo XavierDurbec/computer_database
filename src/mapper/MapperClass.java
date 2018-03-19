@@ -18,7 +18,7 @@ public class MapperClass {
 	}
 	
 	public ResultSet getRs() {
-		return rs;
+		return rs; 
 	}
 	public void setRs(ResultSet rs) {
 		this.rs = rs;
@@ -44,14 +44,19 @@ public class MapperClass {
     	return  c;  
 	}
 	
-	public Company createObjectCompany() throws SQLException {
+	public Company createObjectCompany(int id) throws SQLException {
 		
-		int id = rs.getInt("id");
-    	String name =  rs.getString("name"); 
+	Company c = new Company();
+		
+		if (rs.next()) {
+	
+    	String name =  rs.getString("name");
+  	
+    	 c = new Company(id,name);	
     	
-    	Company c = new Company(id,name);	   
+		}
     	
-    	return c; 
+    	return  c;  
 	}
 	
 	public ListComputer createObjectListComputer () throws SQLException {
@@ -75,8 +80,8 @@ public class MapperClass {
 		ListCompanies lc = new ListCompanies();
 		
 		  while (rs.next()) {
-			  
-			 Company c = createObjectCompany();
+			  int id = rs.getInt("id");
+			 Company c = createObjectCompany(id);
 			 lc.add(c);
 			  
 			  

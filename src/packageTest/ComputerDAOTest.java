@@ -22,9 +22,9 @@ class ComputerDAOTest {
 	void  setUp() throws Exception {
 		
 		cdao = cdao.getInstance();
-		//lc = cdao.selectListComputer();
 		
-		//Computer c = new Computer(80,"MonOrdi",null,null,5);
+	
+	
 	
 		
 		
@@ -52,7 +52,6 @@ class ComputerDAOTest {
 
 	@Test
 	void testCreateComputer() throws SQLException {
-		
 
 	
 		

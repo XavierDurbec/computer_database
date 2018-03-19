@@ -27,6 +27,7 @@ public class ComputerDAO {
 	
 	private ComputerDAO() throws SQLException {
 		conn = conn.getInstance();	
+		conn.openConnection();
 	}
 	
 	public static ComputerDAO getInstance() throws SQLException {

@@ -27,6 +27,7 @@ public class CompanyDAO {
 	
 	private CompanyDAO() throws SQLException {
 		conn = conn.getInstance();	
+		conn.openConnection();
 	}
 	
 	public static CompanyDAO getInstance() throws SQLException {
@@ -51,9 +52,9 @@ public class CompanyDAO {
 	    return a;
 	}
 	
-    public ListCompanies selectComapnies(int id) throws SQLException {
+    public Company selectCompany(int id) throws SQLException {
 		
-    	ListCompanies c ;
+    	Company c ;
     	System.out.println("----------Info sur un Company-----------");	 
      
 	    st = conn.getConn().createStatement();	 	    
@@ -62,7 +63,7 @@ public class CompanyDAO {
 	    rs = ps.executeQuery();
         
         MapperClass m = new MapperClass(rs);        
-    	c =  m.createObjectListCompanies();    
+    	c =  m.createObjectCompany(id);
     	
 	    return c; 
 	}

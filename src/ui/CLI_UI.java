@@ -19,7 +19,7 @@ public class CLI_UI {
 		  System.out.println("Saisir commande : ");
 		  showComputer();
 		 // afficherListCompanies();
-		//  createComputer();
+		//  createComputer(); 
 		//  deleteComputer();
 		  String str = "";
 		  switch (str) {
@@ -65,8 +65,6 @@ public class CLI_UI {
     	System.out.println("affichage du computer : ");
     	System.out.println(c);
 
-
-   	
 	}
 	
 	public void createComputer() throws SQLException {

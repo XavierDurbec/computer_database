@@ -11,6 +11,11 @@ public class Company {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Company() {
+		super();
+
+	}
 		 
 	public int getId() {
 		return id;
