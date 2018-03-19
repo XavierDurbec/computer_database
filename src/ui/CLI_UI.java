@@ -16,8 +16,9 @@ public class CLI_UI {
 	public CLI_UI() throws SQLException  {
 		
 		  System.out.println("Saisir commande : ");
-		  createComputer();
-	// String str = sc.nextLine();
+		  afficherListComputer();
+		//  createComputer();
+		//  deleteComputer();
 		  String str = "";
 		  switch (str) {
 		  
@@ -68,12 +69,11 @@ public class CLI_UI {
 	public void createComputer() throws SQLException {
 	
     	System.out.println("Selectionner l'id de l'ordinateur à creer : ");
-    	int id = sc2.nextInt();    
-    	System.out.println("creation dans la base de donnée ... ");
-
-
+    	int id = sc2.nextInt(); 
+    	
     	System.out.println("creation dans la base de donnée ... ");
         s.createComputer(id, "nouvooo", null, null, 5);
+        
     	System.out.println("affichage du computer : ");
     	System.out.println(s.getComputer(id));
 	}

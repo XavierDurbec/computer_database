@@ -57,7 +57,10 @@ public class Computer {
 	
 	@Override
 	public String toString() {
-		return  name;
+		
+		String str = " id : " + id + " | name : " + name;
+		
+		return  str;
 	}
 	
 }

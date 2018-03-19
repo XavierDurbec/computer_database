@@ -23,7 +23,7 @@ public class Service {
 
 	public ListComputer getListComputer() throws SQLException {
 		ListComputer lc;		
-		lc = cdao.selectListComputer();		
+		lc = cdao.selectListComputer();	 	
 		return lc;
 	}
 	
