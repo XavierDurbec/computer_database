@@ -15,13 +15,13 @@ public class ComputerDAO {
 	private PreparedStatement ps = null;
 	
 	private static ComputerDAO INSTANCE = null;
-
+ 
 	
 	private String queryListComputer = "SELECT id,name,introduced,discontinued,company_id FROM computer";	    
     private String queryInsertComputer = "INSERT INTO computer (id,name,introduced,discontinued,company_id) VALUES (?,?,?,?,?)";
     private String queryDeleteComputer = "DELETE FROM computer WHERE id=?";	    
     private String queryUpdateComputer = "UPDATE computer SET name=?, introduced=?,discontinued=?, company_id=? WHERE id=?";
-	private	String queryComputerInfo = "SELECT id,name,introduced,discontinued,company_id FROM computer WHERE id=?";	    
+	private	String queryComputerInfo = "SELECT name,introduced,discontinued,company_id FROM computer WHERE id=?";	    
 
 
 	
@@ -51,9 +51,9 @@ public class ComputerDAO {
 	    return a;
 	}
 	
-    public ListComputer selectComputer(int id) throws SQLException {
+    public Computer selectComputer(int id) throws SQLException {
 		
-    	ListComputer c ;
+    	Computer c ;
     	System.out.println("----------Info sur un computer-----------");	 
      
 	    st = conn.getConn().createStatement();	 	    
@@ -62,7 +62,7 @@ public class ComputerDAO {
 	    rs = ps.executeQuery();
         
         MapperClass m = new MapperClass(rs);        
-    	c =  m.createObjectListComputer();         	    	
+    	c =  m.createObjectComputer(id);         	    	
 	    return c; 
 	}
 

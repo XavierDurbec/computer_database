@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import model.Computer;
+import model.ListCompanies;
 import model.ListComputer;
 import service.Service;
 
@@ -16,7 +17,8 @@ public class CLI_UI {
 	public CLI_UI() throws SQLException  {
 		
 		  System.out.println("Saisir commande : ");
-		  afficherListComputer();
+		  showComputer();
+		 // afficherListCompanies();
 		//  createComputer();
 		//  deleteComputer();
 		  String str = "";
@@ -42,19 +44,20 @@ public class CLI_UI {
 		  }
 		
 	}
-	
+	 
 	public void afficherListComputer() throws SQLException {
 		ListComputer c = s.getListComputer();
 		System.out.println(c);
 	}
 	
 	public void afficherListCompanies() throws SQLException {
-	   	
+		ListCompanies c = s.getListCompanies();
+		System.out.println(c);
 		}
 	
     public void showComputer() throws SQLException {
     	int id;
-    	ListComputer c ;
+    	Computer c ;
     	System.out.println("Selectionner l'id de l'ordinateur à afficher : ");
     	id = sc2.nextInt();
     	System.out.println("Recherche dans la base de donnée ... ");

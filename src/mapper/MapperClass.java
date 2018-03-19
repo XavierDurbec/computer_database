@@ -24,19 +24,24 @@ public class MapperClass {
 		this.rs = rs;
 	}
 
+	 
 	
-	
-	public Computer createObjectComputer() throws SQLException {
+	public Computer createObjectComputer(int id) throws SQLException {
 		
-		int id = rs.getInt("id");
+		Computer c = new Computer();
+		
+		if (rs.next()) {
+	
     	String name =  rs.getString("name");
     	Timestamp introduced =  rs.getTimestamp("introduced");
     	Timestamp discontinued =  rs.getTimestamp("discontinued");
     	int company_id = rs.getInt("company_id"); 
     	
-    	//Computer c = new Computer(id,name,introduced,discontinued,company_id);	   
+    	 c = new Computer(id,name,introduced,discontinued,company_id);	
     	
-    	return  new Computer(); 
+		}
+    	
+    	return  c;  
 	}
 	
 	public Company createObjectCompany() throws SQLException {
@@ -54,8 +59,8 @@ public class MapperClass {
 		ListComputer lc = new ListComputer();
 		
 		  while (rs.next()) {
-			  
-			 Computer c = createObjectComputer();
+			  int id = rs.getInt("id");
+			 Computer c = createObjectComputer(id);
 			 lc.add(c);			  
 			  
 		  }

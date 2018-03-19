@@ -21,7 +21,7 @@ public class ConnexionManager {
 		} 
 		catch ( ClassNotFoundException e ) 
 		{
-
+ 
 		}
 		
 		conn = DriverManager.getConnection( url,utilisateur,mdp); 

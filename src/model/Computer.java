@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class Computer {
 
-	private int id;
+	private int id; 
 	private String name;
 	private Timestamp dateIntroduced;
 	private Timestamp dateDiscontinued;
@@ -17,6 +17,18 @@ public class Computer {
 		this.name = name;
 		this.dateIntroduced = dateIntroduced;
 		this.dateDiscontinued = dateDiscontinued;
+		this.company = company;
+	}
+	
+	public Computer(int id, String name, Timestamp dateIntroduced, Timestamp dateDiscontinued, int company_id) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dateIntroduced = dateIntroduced;
+		this.dateDiscontinued = dateDiscontinued;
+		
+		Company company = new Company(company_id,"");
+		
 		this.company = company;
 	}
 	

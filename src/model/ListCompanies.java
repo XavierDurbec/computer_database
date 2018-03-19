@@ -10,7 +10,7 @@ public class ListCompanies {
 	public ListCompanies() {
 		super();
 		this.companiesNumber = 0;
-		listCompanies = new ArrayList<Company>();
+		listCompanies = new ArrayList<Company>(); 
 	}
 	public ListCompanies(ArrayList<Company> listCompanies) {
 		super();

@@ -30,7 +30,7 @@ public class ListComputer {
 	
 	public void add(Computer c) {
 		computerNumber++;
-		listComputer.add(c);
+		listComputer.add(c); 
 	}
 	
 	@Override
