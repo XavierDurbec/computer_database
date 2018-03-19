@@ -36,7 +36,7 @@ public class ListComputer {
 	@Override
 	public String toString() {
 		
-		String str = "";
+		String str = ""; 
 		
 		for(int i = 0 ;i< this.getListComputer().size();i++) {
 			str = str.concat( this.getListComputer().get(i).toString() );

@@ -9,20 +9,21 @@ public class Computer {
 	private String name;
 	private Timestamp dateIntroduced;
 	private Timestamp dateDiscontinued;
-	private int manufacturer;
+	private Company company;
 	
-	public Computer(int id, String name, Timestamp dateIntroduced, Timestamp dateDiscontinued, int manufacturer) {
+	public Computer(int id, String name, Timestamp dateIntroduced, Timestamp dateDiscontinued, Company company) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dateIntroduced = dateIntroduced;
 		this.dateDiscontinued = dateDiscontinued;
-		this.manufacturer = manufacturer;
+		this.company = company;
 	}
+	
 	public Computer() {
-		name = null;
-		manufacturer = 0;
+
 	}
+
 	
 	public int getId() {
 		return id;
@@ -48,17 +49,17 @@ public class Computer {
 	public void setDateDiscontinued(Timestamp d) {
 		 this.dateDiscontinued = d;
 	}
-	public int getManufacturer() {
-		return this.manufacturer;
+	public Company getManufacturer() {
+		return this.company;
 	}	
-	public void setManufacturer(int n) {
-		this.manufacturer = n;
+	public void setManufacturer(Company n) {
+		this.company = n;
 	}
 	
 	@Override
 	public String toString() {
 		
-		String str = " id : " + id + " | name : " + name;
+		String str =  "Computer : id = " + id + " | name = " + name;
 		
 		return  str;
 	}

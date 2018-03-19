@@ -27,8 +27,10 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return name ;
-	}
+
+String str =  "Company : id = " + id + " | name = " + name;
+
+return  str;	}
 
 
 

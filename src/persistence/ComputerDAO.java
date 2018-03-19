@@ -21,7 +21,7 @@ public class ComputerDAO {
     private String queryInsertComputer = "INSERT INTO computer (id,name,introduced,discontinued,company_id) VALUES (?,?,?,?,?)";
     private String queryDeleteComputer = "DELETE FROM computer WHERE id=?";	    
     private String queryUpdateComputer = "UPDATE computer SET name=?, introduced=?,discontinued=?, company_id=? WHERE id=?";
-	private	String queryComputerInfo = "SELECT * FROM computer WHERE id=?";	    
+	private	String queryComputerInfo = "SELECT id,name,introduced,discontinued,company_id FROM computer WHERE id=?";	    
 
 
 	
@@ -43,7 +43,7 @@ public class ComputerDAO {
 		System.out.println("-----------Selection de la liste des computers-------");
 	    
 	    st = conn.getConn().createStatement();	 
-	    rs = st.executeQuery(queryListComputer);	   
+	    rs = st.executeQuery(queryListComputer);	    
 	   	     		    	   	
         MapperClass m = new MapperClass(rs); 	
         a = m.createObjectListComputer();
@@ -66,7 +66,7 @@ public class ComputerDAO {
 	    return c; 
 	}
 
-    public void createComputer(int id,String n,Timestamp d1,Timestamp d2,int c_id) throws SQLException {
+    public void createComputer(int id,String name,Timestamp date1,Timestamp date2,int company_id) throws SQLException {
     	
 		System.out.println("---------Creation d'un computer------------");	    
 	    
@@ -74,10 +74,10 @@ public class ComputerDAO {
         ps = conn.getConn().prepareStatement(queryInsertComputer);
 	    
 	    ps.setInt(1,id);
-	    ps.setString(2,n);
-	    ps.setTimestamp(3,d1);
-	    ps.setTimestamp(4,d2);
-	    ps.setInt(5, c_id);
+	    ps.setString(2,name);
+	    ps.setTimestamp(3,date1);
+	    ps.setTimestamp(4,date2);
+	    ps.setInt(5, company_id);
 	    
 	    int status = ps.executeUpdate();
 	    
@@ -98,18 +98,19 @@ public class ComputerDAO {
          System.out.println(status);    
  	}
     
-    public void UpdateComputer(int id,String newName,Timestamp d1,Timestamp d2,int c_id) throws SQLException {
+    public void UpdateComputer(int id,String newName,Timestamp date1,Timestamp date2,int company_id) throws SQLException {
 
   		System.out.println("---------Update d'un computer------------");	    
   	    
   	    st = conn.getConn().createStatement();	 	    
         ps = conn.getConn().prepareStatement(queryUpdateComputer);
         
-        ps.setString(1,newName);
-  	    ps.setTimestamp(2,d1);
-  	    ps.setTimestamp(3,d2);
-  	    ps.setInt(4,c_id);
-  	    ps.setInt(5, id);
+        ps.setInt(1, id);
+        ps.setString(2,newName);
+  	    ps.setTimestamp(3,date1);
+  	    ps.setTimestamp(4,date2);
+  	    ps.setInt(5,company_id);
+  	    
   	    
   	    int status = ps.executeUpdate();
   	    

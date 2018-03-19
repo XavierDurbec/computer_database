@@ -6,7 +6,7 @@ public class ListCompanies {
 	
 	private static int companiesNumber;
 	private ArrayList<Company> listCompanies;
-	
+	 
 	public ListCompanies() {
 		super();
 		this.companiesNumber = 0;
@@ -33,8 +33,15 @@ public class ListCompanies {
 	}
 	@Override
 	public String toString() {
-		return "ListCompanies [companiesNumber=" + companiesNumber + ", lisCompanies=" + listCompanies + "]";
-	}
+
+		String str = ""; 
+		
+		for(int i = 0 ;i< this.getListCompanies().size();i++) {
+			str = str.concat( this.getListCompanies().get(i).toString() );
+			str = str.concat("\n");
+		}
+		
+		return str;	}
 
 	
 }

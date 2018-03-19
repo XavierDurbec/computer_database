@@ -32,17 +32,18 @@ public class MapperClass {
     	String name =  rs.getString("name");
     	Timestamp introduced =  rs.getTimestamp("introduced");
     	Timestamp discontinued =  rs.getTimestamp("discontinued");
-    	int company_id = rs.getInt("company_id");
+    	int company_id = rs.getInt("company_id"); 
     	
-    	Computer c = new Computer(id,name,introduced,discontinued,company_id);	   
+    	//Computer c = new Computer(id,name,introduced,discontinued,company_id);	   
     	
-    	return c; 
+    	return  new Computer(); 
 	}
 	
 	public Company createObjectCompany() throws SQLException {
 		
 		int id = rs.getInt("id");
-    	String name =  rs.getString("name"); 	
+    	String name =  rs.getString("name"); 
+    	
     	Company c = new Company(id,name);	   
     	
     	return c; 

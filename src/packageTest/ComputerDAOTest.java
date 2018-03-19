@@ -22,10 +22,9 @@ class ComputerDAOTest {
 	void  setUp() throws Exception {
 		
 		cdao = cdao.getInstance();
-		cdao.selectListComputer();
-		lc = cdao.selectListComputer();
+		//lc = cdao.selectListComputer();
 		
-		Computer c = new Computer(80,"MonOrdi",null,null,5);
+		//Computer c = new Computer(80,"MonOrdi",null,null,5);
 	
 		
 		
