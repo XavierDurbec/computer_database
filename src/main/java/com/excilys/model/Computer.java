@@ -1,4 +1,4 @@
-package com.excilys.model;
+package main.java.com.excilys.model;
 
 import java.sql.Timestamp;
 

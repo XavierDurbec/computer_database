@@ -1,4 +1,4 @@
-package com.excilys;
+package test.java.com.excilys;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

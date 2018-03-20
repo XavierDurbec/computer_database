@@ -1,10 +1,10 @@
-package com.excilys.persistence;
+package main.java.com.excilys.persistence;
 
 import java.sql.*;
 
-import com.excilys.mapper.MapperClass;
-import com.excilys.model.*;
-import com.excilys.service.Service;
+import main.java.com.excilys.mapper.MapperClass;
+import main.java.com.excilys.model.*;
+import main.java.com.excilys.service.Service;
 
 
 public class ComputerDAO {

@@ -1,4 +1,4 @@
-package com.excilys.persistence;
+package main.java.com.excilys.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

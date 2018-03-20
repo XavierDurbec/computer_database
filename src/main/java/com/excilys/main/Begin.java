@@ -1,4 +1,4 @@
-package com.excilys.main;
+package main.java.com.excilys.main;
 
 
 public class Begin {

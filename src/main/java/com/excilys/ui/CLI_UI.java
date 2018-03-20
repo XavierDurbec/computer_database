@@ -1,10 +1,10 @@
-package com.excilys.ui;
+package main.java.com.excilys.ui;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.excilys.model.*;
-import com.excilys.service.Service;
+import main.java.com.excilys.model.*;
+import main.java.com.excilys.service.Service;
 
 public class CLI_UI {
 	

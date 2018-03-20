@@ -1,4 +1,4 @@
-package com.excilys.service;
+package main.java.com.excilys.service;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -6,8 +6,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.excilys.model.*;
-import com.excilys.persistence.*;
+import main.java.com.excilys.model.*;
+import main.java.com.excilys.persistence.*;
 
 
 public class Service {

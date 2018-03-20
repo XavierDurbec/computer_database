@@ -1,4 +1,4 @@
-package com.excilys.ui;
+package main.java.com.excilys.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -16,11 +16,10 @@ import javax.swing.JScrollPane;
 
 
 
-import com.excilys.mapper.MapperClass;
-import com.excilys.model.Computer;
-import com.excilys.model.ListComputer;
-import com.excilys.persistence.ComputerDAO;
-import com.excilys.service.Service;
+import main.java.com.excilys.mapper.MapperClass;
+import main.java.com.excilys.model.*;
+import main.java.com.excilys.persistence.ComputerDAO;
+import main.java.com.excilys.service.Service;
 
 public class TestPagination extends JFrame{
     //Notre Panneau de pagination
