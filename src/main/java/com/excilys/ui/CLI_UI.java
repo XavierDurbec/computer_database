@@ -1,16 +1,15 @@
-package ui;
+package com.excilys.ui;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import model.Computer;
-import model.ListCompanies;
-import model.ListComputer;
-import service.Service;
+import com.excilys.model.*;
+import com.excilys.service.Service;
 
 public class CLI_UI {
 	
 	private Service s = new Service();
+	Scanner scCommande = new Scanner(System.in);
 	Scanner sc = new Scanner(System.in);
 	Scanner sc2 = new Scanner(System.in);
 	
@@ -18,28 +17,30 @@ public class CLI_UI {
 		
 		  System.out.println("Saisir commande : ");
 		  showComputer();
+		  int i;
+		  i = scCommande.nextInt();
 		 // afficherListCompanies();
 		//  createComputer(); 
 		//  deleteComputer();
 		  String str = "";
-		  switch (str) {
+		  switch (i) {
 		  
-		  case "List computers":    afficherListComputer();
+		  case 1:    afficherListComputer();
 		  			             	break;
 		  			             	
-		  case "List companies":    afficherListCompanies();
+		  case 2:    afficherListCompanies();
 		  			             	break;
 		  			             
-		  case "Show computer":     showComputer();
+		  case 3:     showComputer();
 			                        break;			             	
 		  			             	
-		  case "Create computer":   createComputer();
+		  case 4:      createComputer();
 		  							break;
 		  							
-		  case "Delete computer":   deleteComputer();
+		  case 5:   deleteComputer();
 	                            	break;
 	                            	
-		  case "Update computer":   updateComputer();
+		  case 6:   updateComputer();
 		                        	break;
 		  }
 		

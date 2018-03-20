@@ -1,4 +1,4 @@
-package ui;
+package com.excilys.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -14,13 +14,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.mysql.jdbc.Statement;
 
-import mapper.MapperClass;
-import model.Computer;
-import model.ListComputer;
-import persistence.ComputerDAO;
-import service.Service;
+
+import com.excilys.mapper.MapperClass;
+import com.excilys.model.Computer;
+import com.excilys.model.ListComputer;
+import com.excilys.persistence.ComputerDAO;
+import com.excilys.service.Service;
 
 public class TestPagination extends JFrame{
     //Notre Panneau de pagination
@@ -56,7 +56,6 @@ public class TestPagination extends JFrame{
             /*
              * Implémentation de la méthode update de l'interface
              */
-            @Override
             public void update(List<Computer> data) {
                 dataLayer.removeAll();
                 dataLayer.repaint();

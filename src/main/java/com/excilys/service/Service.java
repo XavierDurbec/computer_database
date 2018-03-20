@@ -1,4 +1,4 @@
-package service;
+package com.excilys.service;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -6,12 +6,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.Company;
-import model.Computer;
-import model.ListCompanies;
-import model.ListComputer;
-import persistence.CompanyDAO;
-import persistence.ComputerDAO;
+import com.excilys.model.*;
+import com.excilys.persistence.*;
+
 
 public class Service {
 	

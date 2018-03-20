@@ -1,4 +1,4 @@
-package mapper;
+package com.excilys.mapper;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import model.*;
+import com.excilys.model.*;
 
 public class MapperClass {
 	
