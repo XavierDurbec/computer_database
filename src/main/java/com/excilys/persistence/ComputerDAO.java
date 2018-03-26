@@ -15,6 +15,7 @@ public class ComputerDAO {
 	private PreparedStatement ps = null;
 	
 	private static ComputerDAO INSTANCE = null;
+	ListComputer lc = new ListComputer();
  
 	
 	private String queryListComputer = "SELECT id,name,introduced,discontinued,company_id FROM computer";	    
@@ -28,6 +29,9 @@ public class ComputerDAO {
 	private ComputerDAO() throws SQLException {
 		conn = conn.getInstance();	
 		conn.openConnection();
+		lc = selectListComputer();
+		conn.closeConnection();
+		
 	}
 	
 	public static ComputerDAO getInstance() throws SQLException {
@@ -37,6 +41,14 @@ public class ComputerDAO {
 		return INSTANCE;
 	}
 
+
+	public ListComputer getLc() {
+		return lc;
+	}
+
+	public void setLc(ListComputer lc) {
+		this.lc = lc;
+	}
 
 	public ListComputer selectListComputer() throws SQLException {
 		

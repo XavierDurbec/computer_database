@@ -10,14 +10,14 @@ import main.java.com.excilys.model.*;
 import main.java.com.excilys.persistence.*;
 
 
-public class Service {
+public class ServiceDB {
 	
 	private ComputerDAO cdao;
 	private CompanyDAO company_dao;
 
 
 	
-	public Service() {
+	public ServiceDB()  {
 	
 	    
 	} 
@@ -25,22 +25,22 @@ public class Service {
 	
 	
 
-	public ListComputer getListComputer()  {
+	public ListComputer getListComputer() {
 	    
 		try {
 			cdao = cdao.getInstance();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ListComputer lc =null;		
-	
-			lc = cdao.getLc();
-		
+		ListComputer lc = null;	
+		try {
+			lc = cdao.selectListComputer();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	 
 		try {
 			cdao.closeConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		cdao = null;

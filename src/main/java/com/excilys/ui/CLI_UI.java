@@ -16,31 +16,32 @@ public class CLI_UI {
 	public CLI_UI() throws SQLException  {
 		
 		  System.out.println("Saisir commande : ");
-		  showComputer();
+		 // showComputer();
 		  int i;
-		  i = scCommande.nextInt();
-		 // afficherListCompanies();
+		 // i = scCommande.nextInt();
+		  afficherListCompanies();
+		  afficherListComputer();
 		//  createComputer(); 
 		//  deleteComputer();
 		  String str = "";
-		  switch (i) {
+		  switch (str) {
 		  
-		  case 1:    afficherListComputer();
+		  case "Show listComputer":    afficherListComputer();
 		  			             	break;
 		  			             	
-		  case 2:    afficherListCompanies();
+		  case "Show listCompanies":    afficherListCompanies();
 		  			             	break;
 		  			             
-		  case 3:     showComputer();
+		  case "Show Computer":     showComputer();
 			                        break;			             	
 		  			             	
-		  case 4:      createComputer();
+		  case "Create Computer":      createComputer();
 		  							break;
 		  							
-		  case 5:   deleteComputer();
+		  case "Delete Computer":   deleteComputer();
 	                            	break;
 	                            	
-		  case 6:   updateComputer();
+		  case "Update Computer":   updateComputer();
 		                        	break;
 		  }
 		
