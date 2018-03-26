@@ -1,4 +1,4 @@
-package model;
+package main.java.com.excilys.model;
 
 public class Company {
 	
@@ -11,7 +11,12 @@ public class Company {
 		this.id = id;
 		this.name = name;
 	}
-		
+	
+	public Company() {
+		super();
+
+	}
+		 
 	public int getId() {
 		return id;
 	}
@@ -27,8 +32,10 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return name ;
-	}
+
+String str =  "Company : id = " + id + " | name = " + name;
+
+return  str;	}
 
 
 

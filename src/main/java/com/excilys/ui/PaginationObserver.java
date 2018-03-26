@@ -1,4 +1,4 @@
-package ui;
+package main.java.com.excilys.ui;
 
 import java.util.List;
 

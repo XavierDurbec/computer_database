@@ -1,11 +1,12 @@
-package mapper;
+package main.java.com.excilys.mapper;
 
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import model.*;
+import main.java.com.excilys.model.*;
 
 public class MapperClass {
 	
@@ -17,34 +18,45 @@ public class MapperClass {
 	}
 	
 	public ResultSet getRs() {
-		return rs;
+		return rs; 
 	}
 	public void setRs(ResultSet rs) {
 		this.rs = rs;
 	}
 
+	 
 	
-	
-	public Computer createObjectComputer() throws SQLException {
+	public Computer createObjectComputer(int id) throws SQLException {
 		
-		int id = rs.getInt("id");
+		Computer c = new Computer();
+		
+		if (rs.next()) {
+	
     	String name =  rs.getString("name");
-    	Date introduced =  rs.getDate("introduced");
-    	Date discontinued =  rs.getDate("discontinued");
-    	int company_id = rs.getInt("company_id");
+    	Timestamp introduced =  rs.getTimestamp("introduced");
+    	Timestamp discontinued =  rs.getTimestamp("discontinued");
+    	int company_id = rs.getInt("company_id"); 
     	
-    	Computer c = new Computer(id,name,introduced,discontinued,company_id);	   
+    	 c = new Computer(id,name,introduced,discontinued,company_id);	
     	
-    	return c; 
+		}
+    	
+    	return  c;  
 	}
 	
-	public Company createObjectCompany() throws SQLException {
+	public Company createObjectCompany(int id) throws SQLException {
 		
-		int id = rs.getInt("id");
-    	String name =  rs.getString("name"); 	
-    	Company c = new Company(id,name);	   
+	Company c = new Company();
+		
+		if (rs.next()) {
+	
+    	String name =  rs.getString("name");
+  	
+    	 c = new Company(id,name);	
     	
-    	return c; 
+		}
+    	
+    	return  c;  
 	}
 	
 	public ListComputer createObjectListComputer () throws SQLException {
@@ -52,8 +64,8 @@ public class MapperClass {
 		ListComputer lc = new ListComputer();
 		
 		  while (rs.next()) {
-			  
-			 Computer c = createObjectComputer();
+			  int id = rs.getInt("id");
+			 Computer c = createObjectComputer(id);
 			 lc.add(c);			  
 			  
 		  }
@@ -68,8 +80,8 @@ public class MapperClass {
 		ListCompanies lc = new ListCompanies();
 		
 		  while (rs.next()) {
-			  
-			 Company c = createObjectCompany();
+			  int id = rs.getInt("id");
+			 Company c = createObjectCompany(id);
 			 lc.add(c);
 			  
 			  

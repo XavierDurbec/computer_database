@@ -1,4 +1,4 @@
-package model;
+package main.java.com.excilys.model;
 
 import java.util.ArrayList;
 
@@ -30,12 +30,24 @@ public class ListComputer {
 	
 	public void add(Computer c) {
 		computerNumber++;
-		listComputer.add(c);
+		listComputer.add(c); 
 	}
 	
 	@Override
 	public String toString() {
-		return "ListComputer [computerNumber=" + computerNumber + ", listComputer=" + listComputer + "]";
+		
+		String str = ""; 
+		
+		for(int i = 0 ;i< this.getListComputer().size();i++) {
+			str = str.concat( this.getListComputer().get(i).toString() );
+			str = str.concat("\n");
+		}
+		
+		return str;
+				
+				
+
+		
 	}
 
 }

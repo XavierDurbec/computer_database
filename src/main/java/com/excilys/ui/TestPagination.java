@@ -1,4 +1,4 @@
-package ui;
+package main.java.com.excilys.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -14,13 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.mysql.jdbc.Statement;
 
-import mapper.MapperClass;
-import model.Computer;
-import model.ListComputer;
-import persistence.ComputerDAO;
-import service.Service;
+
+import main.java.com.excilys.mapper.MapperClass;
+import main.java.com.excilys.model.*;
+import main.java.com.excilys.persistence.ComputerDAO;
+import main.java.com.excilys.service.Service;
 
 public class TestPagination extends JFrame{
     //Notre Panneau de pagination
@@ -49,14 +48,13 @@ public class TestPagination extends JFrame{
          * Construction de notre système de pagination pour la liste
          * fournie par la méthode getList()
          */
-        paginationPanel = new PaginationPanel<Computer>(getList());
+     //   paginationPanel = new PaginationPanel<Computer>(getList());
         //Instanciation avec classe anonyme de notre observateur
         paginationObserver = new PaginationObserver<Computer>(){
 
             /*
              * Implémentation de la méthode update de l'interface
              */
-            @Override
             public void update(List<Computer> data) {
                 dataLayer.removeAll();
                 dataLayer.repaint();
@@ -85,17 +83,7 @@ public class TestPagination extends JFrame{
     /*
      * Création d'une liste de données à paginer
      */
-    private ArrayList<Computer> getList() throws SQLException{
-    	
-  	
-  Service s = new Service();
-		  
-		  System.out.println("test");
 
-		//  System.out.println(s.getLc().getListComputer());
-	   
-          return   s.getLc().getListComputer();
-    }
     
     public static void main(String[] args) throws SQLException{
         TestPagination testView = new TestPagination();

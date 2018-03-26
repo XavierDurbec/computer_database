@@ -1,4 +1,4 @@
-package ui;
+package main.java.com.excilys.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,7 +34,6 @@ public class PaginationPanel<T> extends JPanel{
     private void initComponents() {
         listener = new ActionListener(){
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 String command = e.getActionCommand();
                 if(command.equals("next"))
